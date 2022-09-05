@@ -148,4 +148,4 @@ def lastConn(username, password, storeityesorno, storeityesemplacement):
             f.write(prenom)
 
 
-    
+
