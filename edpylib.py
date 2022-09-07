@@ -9,6 +9,9 @@ import ctypes
 
 
 def prenom(username, password, storeityesorno, storeityesemplacement):
+    if os.path.exists(storeityesemplacement):
+        os.remove(storeityesemplacement)
+
     print("e")
     uName = username
     uPass = password
@@ -56,6 +59,8 @@ def prenom(username, password, storeityesorno, storeityesemplacement):
 
 
 def nom(username, password, storeityesorno, storeityesemplacement):
+    if os.path.exists(storeityesemplacement):
+        os.remove(storeityesemplacement)
     print("e")
     uName = username
     uPass = password
@@ -98,10 +103,12 @@ def nom(username, password, storeityesorno, storeityesemplacement):
     print(nom)
     if storeityesorno == "yes" :
         with open(storeityesemplacement, 'w') as f:
-            f.write(prenom)
+            f.write(nom)
 
 
-def lastConn(username, password, storeityesorno, storeityesemplacement):
+def email(username, password, storeityesorno, storeityesemplacement):
+    if os.path.exists(storeityesemplacement):
+        os.remove(storeityesemplacement)
     print("e")
     uName = username
     uPass = password
@@ -140,12 +147,11 @@ def lastConn(username, password, storeityesorno, storeityesemplacement):
     res = conn.getresponse()
     data = res.read()
 
-    lastConnnection = json.loads(data.decode("utf-8"))['data']['accounts'][0]['lastConnection']
-    print(lastConnnection)
+    email = json.loads(data.decode("utf-8"))['data']['accounts'][0]['email']
+    print(email)
 
     if storeityesorno == "yes" :
         with open(storeityesemplacement, 'w') as f:
-            f.write(prenom)
-
+            f.write(email)
 
 
